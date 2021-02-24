@@ -4,6 +4,7 @@ const errorMessage = require('../error/error.messages');
 const errorCodes = require('../constant/errorCodes.enum');
 
 module.exports = {
+
     checkIsIdValid:(req, res, next) =>{
         try{
             const {preferLang = 'en'} = req.body;
@@ -18,11 +19,13 @@ module.exports = {
             res.status(errorCodes.BAD_REQUEST).json(e.message)
         }
     },
+
     // checkIsNameValid: async (req, res, next) => {
     //     try {
     //
     //     }
     // }
+
     checkIsUserExists: async (req, res, next) =>{
         try{
             const {userId} = req.params;

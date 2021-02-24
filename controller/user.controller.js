@@ -12,6 +12,7 @@ module.exports = {
         response.json(request.body);
 
     } catch (e) {
+
         res.status(errorCodes.BAD_REQUEST).json(e.message);
     }
 },
@@ -22,6 +23,7 @@ module.exports = {
             const { users } = req.params;
 
         } catch (e) {
+
            res.send(errorMessage.DELETE_USER[preferLang]);
         }
     },
@@ -31,7 +33,9 @@ module.exports = {
             const users = await userService.findUsers();
 
             res.json(users);
+
         }catch(e) {
+
             res.status(errorCodes.BAD_REQUEST).json(e.message);
         }
     },
