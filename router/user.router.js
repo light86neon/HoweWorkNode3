@@ -13,10 +13,11 @@ router.get('/:userId',
     userMiddleware.checkIsUserExists,
     userController.getSingleUser);
 
+router.delete('/:userId',
+    userController.findOneAndDelete,
+    userMiddleware.checkIsIdValid, );
+
 // router.post(userMiddleware.isUserValid)
 router.post('/', userController.createUser);
-
-router.delete('/:userId', userController.findOneAndDelete );
-
 
 module.exports = router;

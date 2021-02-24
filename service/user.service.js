@@ -28,9 +28,10 @@ module.exports = {
     deleteUser: async (userId) => {
         let users = await fsExtra.readJson(usersPath);
         const parse = JSON.parse(users.toString());
+
         users.splice(userId, 1);
 
-        fsExtra.writeFile(usersPath, JSON.stringify(parse))
+        fsExtra.writeFile(usersPath, JSON.stringify(parse));
         // fsExtra.writeFile(usersPath, users);
     }
 }

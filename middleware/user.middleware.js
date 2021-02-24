@@ -56,7 +56,7 @@ module.exports = {
 
           next()
         } catch (e) {
-            res.status(errorCodes.BAD_REQUEST).json(e.message)
+            res.status(errorCodes.BAD_REQUEST).json(e.message);
         }
     }
 }
