@@ -1,7 +1,5 @@
 const router = require('express').Router();
 
-const promisify = require('util').promisify;
-
 const userController = require('../controller/user.controller');
 const userMiddleware = require('../middleware/user.middleware');
 
@@ -14,10 +12,10 @@ router.get('/:userId',
     userController.getSingleUser);
 
 router.delete('/:userId',
-    userController.findOneAndDelete,
-    userMiddleware.checkIsIdValid, );
+    userMiddleware.checkIsIdValid,
+    userController.findOneAndDelete
+    );
 
-// router.post(userMiddleware.isUserValid)
 router.post('/', userController.createUser);
 
 module.exports = router;

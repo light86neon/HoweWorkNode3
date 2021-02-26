@@ -1,4 +1,4 @@
-const userService = require('../service/user.service')
+const userService = require('../service/user.service');
 
 const errorMessage = require('../error/error.messages');
 const errorCodes = require('../constant/errorCodes.enum');
@@ -8,7 +8,7 @@ module.exports = {
         console.log(request.body)
 
     try{
-        if (!request.body) return response.sendStatus(400)
+        if (!request.body) return response.sendStatus(400);
         response.json(request.body);
 
     } catch (e) {
@@ -28,14 +28,13 @@ module.exports = {
         }
     },
 
-    getAllUsers: async (req,res) =>{
+    getAllUsers: (req,res) =>{
         try{
-            const users = await userService.findUsers();
+            const users = userService.findUsers();
 
             res.json(users);
 
         }catch(e) {
-
             res.status(errorCodes.BAD_REQUEST).json(e.message);
         }
     },
@@ -45,7 +44,6 @@ module.exports = {
             res.json(req.user);
 
         } catch (e) {
-
             res.status(errorCodes.BAD_REQUEST).json(e.message);
         }
     },
@@ -56,7 +54,6 @@ module.exports = {
             user.Service.createUser(req.body);
 
         } catch (e) {
-
             res.status(errorCodes.CREATED).json(errorMessage.CREATED_USER[preferLang]);
         }
     },
@@ -68,9 +65,7 @@ module.exports = {
 
             res.status(errorCodes.DELETED).json(errorMessage.DELETE_USER [preferLang]);
         } catch (e) {
-
             res.status(error.BAD_REQUEST).json(e.message);
-
         }
     },
 

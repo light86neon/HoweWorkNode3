@@ -16,15 +16,10 @@ module.exports = {
 
             next();
         } catch(e){
+
             res.status(errorCodes.BAD_REQUEST).json(e.message)
         }
     },
-
-    // checkIsNameValid: async (req, res, next) => {
-    //     try {
-    //
-    //     }
-    // }
 
     checkIsUserExists: async (req, res, next) =>{
         try{
@@ -34,6 +29,7 @@ module.exports = {
             const foundUser = await userService.findUserById(+userId);
 
             if (!foundUser) {
+
                 throw new Error(errorMessage.USER_NOT_FOUND[preferLang]);
             }
 
@@ -41,6 +37,7 @@ module.exports = {
 
             next();
         } catch(e){
+
             res.status(errorCodes.BAD_REQUEST).json(e.message)
         }
     },
@@ -59,6 +56,7 @@ module.exports = {
 
           next()
         } catch (e) {
+
             res.status(errorCodes.BAD_REQUEST).json(e.message);
         }
     }
