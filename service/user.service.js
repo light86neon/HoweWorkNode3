@@ -1,5 +1,5 @@
 const fsExtra = require('fs-extra');
-const path = require('path')
+
 const fs = require('fs');
 
 const {promisify} = require('util');

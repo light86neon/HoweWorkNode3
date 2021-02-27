@@ -1,4 +1,4 @@
-const userService = require('../service/user.service')
+const userService = require('../service/user.service');
 
 const errorMessage = require('../error/error.messages');
 const errorCodes = require('../constant/errorCodes.enum');

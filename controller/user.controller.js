@@ -63,7 +63,7 @@ module.exports = {
             const {preferLang = 'en'} = req.body;
             const {userId} = req.params;
 
-            userService. deleteUser(userId);
+            userService. deleteUser+(userId);
 
             res.status(errorCodes.DELETED).json(errorMessage.DELETE_USER [preferLang]);
         } catch (e) {
