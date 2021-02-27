@@ -22,6 +22,7 @@ module.exports = {
             const {preferLang = 'en'} = req.body;
             const { users } = req.params;
 
+            Users
         } catch (e) {
 
            res.send(errorMessage.DELETE_USER[preferLang]);
@@ -60,8 +61,9 @@ module.exports = {
     deleteOneUser: (req, res) => {
         try {
             const {preferLang = 'en'} = req.body;
+            const {userId} = req.params;
 
-            userService. deleteUser(req.params);
+            userService. deleteUser(userId);
 
             res.status(errorCodes.DELETED).json(errorMessage.DELETE_USER [preferLang]);
         } catch (e) {
