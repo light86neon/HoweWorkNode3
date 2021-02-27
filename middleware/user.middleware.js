@@ -11,13 +11,13 @@ module.exports = {
             const {userId} = req.params;
 
             if(+userId < 0 || !Number.isInteger(+userId) || Number.isNaN(+userId)){
-                throw new Error(errorMessage.NOT_VALID_ID[preferLang])
+                throw new Error(errorMessage.NOT_VALID_ID[preferLang]);
             }
 
             next();
         } catch(e){
 
-            res.status(errorCodes.BAD_REQUEST).json(e.message)
+            res.status(errorCodes.BAD_REQUEST).json(e.message);
         }
     },
 
@@ -38,7 +38,7 @@ module.exports = {
             next();
         } catch(e){
 
-            res.status(errorCodes.BAD_REQUEST).json(e.message)
+            res.status(errorCodes.BAD_REQUEST).json(e.message);
         }
     },
 
@@ -54,7 +54,7 @@ module.exports = {
               throw new Error(errorMessage.TOO_WEAK_PASSWORD[preferLang]);
           }
 
-          next()
+          next();
         } catch (e) {
 
             res.status(errorCodes.BAD_REQUEST).json(e.message);

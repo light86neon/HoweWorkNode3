@@ -5,10 +5,10 @@ const errorCodes = require('../constant/errorCodes.enum');
 
 module.exports = {
     JsonParser:(req, res) =>{
-        console.log(request.body)
+        console.log(request.body);
 
     try{
-        if (!request.body) return response.sendStatus(400);
+        if (!request.body) return response.sendStatus(errorCodes.BAD_REQUEST);
         response.json(request.body);
 
     } catch (e) {
@@ -16,19 +16,6 @@ module.exports = {
         res.status(errorCodes.BAD_REQUEST).json(e.message);
     }
 },
-
-    findOneAndDelete: (req, res) =>{
-        try{
-            const {preferLang = 'en'} = req.body;
-            const { users } = req.params;
-
-            Users
-        } catch (e) {
-
-           res.send(errorMessage.DELETE_USER[preferLang]);
-        }
-    },
-
     getAllUsers: (req,res) =>{
         try{
             const users = userService.findUsers();

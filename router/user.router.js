@@ -13,7 +13,7 @@ router.get('/:userId',
 
 router.delete('/:userId',
     userMiddleware.checkIsIdValid,
-    userController.findOneAndDelete
+    userController.deleteOneUser
     );
 
 router.post('/', userController.createUser);
