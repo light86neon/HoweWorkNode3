@@ -4,21 +4,21 @@ const errorMessage = require('../error/error.messages');
 const errorCodes = require('../constant/errorCodes.enum');
 
 module.exports = {
-    JsonParser:(req, res) =>{
-        console.log(request.body);
+    JsonParser: (req, res) =>{
+       console.log(req.body);
 
     try{
-        if (!request.body) return response.sendStatus(errorCodes.BAD_REQUEST);
-        response.json(request.body);
+        if (!req.body) return res.sendStatus(errorCodes.BAD_REQUEST);
+       res.json(request.body);
 
     } catch (e) {
 
         res.status(errorCodes.BAD_REQUEST).json(e.message);
     }
 },
-    getAllUsers: (req,res) =>{
+    getAllUsers: async (req, res) =>{
         try{
-            const users = userService.findUsers();
+            const users = await userService.findUsers();
 
             res.json(users);
 
@@ -27,30 +27,30 @@ module.exports = {
         }
     },
 
-    getSingleUser:(req,res) =>{
+    getSingleUser: async (req,res) =>{
         try {
-            res.json(req.user);
+           res.json(req.user);
 
         } catch (e) {
             res.status(errorCodes.BAD_REQUEST).json(e.message);
         }
     },
 
-    createUser:(req,res)=>{
+    createUser: async (req,res)=>{
         try {
             const {preferLang = 'en'} = req.body;
-            user.Service.createUser(req.body);
+           await user.Service.createUser(req.body);
 
         } catch (e) {
             res.status(errorCodes.CREATED).json(errorMessage.CREATED_USER[preferLang]);
         }
     },
-    deleteOneUser: (req, res) => {
+    deleteOneUser: async (req, res) => {
         try {
             const {preferLang = 'en'} = req.body;
             const {userId} = req.params;
 
-            userService. deleteUser+(userId);
+          await userService. deleteUser+(userId);
 
             res.status(errorCodes.DELETED).json(errorMessage.DELETE_USER [preferLang]);
         } catch (e) {
